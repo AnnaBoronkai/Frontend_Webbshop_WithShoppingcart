@@ -17,7 +17,7 @@ function toggleSearchBar() {
 };
 
 
-//Funktion för att visa och dölja varukorg OM man klickar på shoppingCartets x eller utanför så ska den döljas.
+//Funktion för att visa och dölja varukorg. OM man klickar på shoppingCartets x eller utanför så ska den döljas.
 //Om man klickar på shoppingCartet-ikonen ska den visas
 function toggleShoppingCart(){
     const cart = document.getElementById('shoppingCart')
@@ -64,6 +64,17 @@ $(document).ready(function () {
     initializeSlider();
     addCategoryHeader("ALLA PRODUKTER");
     initializeTypingHeader();
+
+    /* Detta är nytt och kanske fel */
+    $('#cardsRow').on('click', '.order-btn', function(event) {
+        event.preventDefault();
+
+        var productId = $(this).data('product-id').find('.accordion-button').attr('id').replace('flush-heading', '');
+        console.log("Produkt med ID " + productId + " läggs till i varukorgen.");
+
+        addToCart(productId)
+    });
+
 });
 
 
@@ -96,7 +107,7 @@ function createCard(id, image, title, description, price) {
                     </div>
                 </div>
                 <small id="price-text" class="text-muted">$${price}</small>
-                <a class="btn btn-outline-dark my-2 order-btn" href="orderpage/order.html?id=${id}" role="button">Beställ</a>
+                <a class="btn btn-outline-dark my-2 order-btn" href="orderpage/order.html?id=${id}" data-product-id="${id}" role="button">Beställ</a>
                 
             </div>
         </div>
