@@ -33,6 +33,15 @@ function toggleShoppingCart(){
     }
 }
 
+const shoppingCartIcon = document.getElementById('shoppingCartIcon')
+shoppingCartIcon.addEventListener('click', function() {
+    toggleShoppingCart();
+});
+
+const pageOverlay = document.getElementById('pageOverlay')
+pageOverlay.addEventListener('click', function() {
+    toggleShoppingCart();
+});
 
 
 const q = document.querySelectorAll('.q');
