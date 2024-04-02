@@ -17,6 +17,8 @@ function toggleSearchBar() {
 };
 
 
+
+
 const q = document.querySelectorAll('.q');
 const a = document.querySelectorAll('.a');
 const arr = document.querySelectorAll('.arrow');

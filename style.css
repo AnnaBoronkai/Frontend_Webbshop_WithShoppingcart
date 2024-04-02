@@ -314,3 +314,29 @@ footer {
     padding: 1em 1em 2em 3.3em;
     height: initial;
 }
+
+/* --------------------- shoppingCart och overlay --------------------- */
+
+.overlay {
+    display: none; /* Dold till en början */
+    position: fixed; /* Stannar på plats när man scrollar */
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Halvgenomskinlig svart */
+    z-index: 1; /* Säkerställer att den ligger över andra element */
+}
+
+.shopping-cart {
+    display: none; /* Dold till en början */
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50%; /* Tar upp halva skärmen */
+    height: 100%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5); /* Lägger till skugga */
+    z-index: 2; /* Säkerställer att den ligger över overlay */
+}
