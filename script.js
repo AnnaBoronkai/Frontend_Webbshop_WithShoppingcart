@@ -17,31 +17,6 @@ function toggleSearchBar() {
 };
 
 
-//Funktion för att visa och dölja varukorg. OM man klickar på shoppingCartets x eller utanför så ska den döljas.
-//Om man klickar på shoppingCartet-ikonen ska den visas
-function toggleShoppingCart(){
-    const cart = document.getElementById('shoppingCart')
-    const overlay = document.getElementById('pageOverlay')
-
-    if(cart.style.display === 'none'){
-        cart.style.display = 'block'
-        overlay.style.display = 'block'
-
-    } else {
-        cart.style.display = 'none'
-        overlay.style.display = 'none'
-    }
-}
-
-const shoppingCartIcon = document.getElementById('shoppingCartIcon')
-shoppingCartIcon.addEventListener('click', function() {
-    toggleShoppingCart();
-});
-
-const pageOverlay = document.getElementById('pageOverlay')
-pageOverlay.addEventListener('click', function() {
-    toggleShoppingCart();
-});
 
 
 const q = document.querySelectorAll('.q');
@@ -69,7 +44,7 @@ $(document).ready(function () {
     $('#cardsRow').on('click', '.order-btn', function(event) {
         event.preventDefault();
 
-        var productId = $(this).data('product-id').find('.accordion-button').attr('id').replace('flush-heading', '');
+        var productId = $(this).data('product-id');
         console.log("Produkt med ID " + productId + " läggs till i varukorgen.");
 
         addToCart(productId)
@@ -106,7 +81,7 @@ function createCard(id, image, title, description, price) {
                         </div>
                     </div>
                 </div>
-                <small id="price-text" class="text-muted">$${price}</small>
+                <small id="price-text" class="text-muted">$${price}</small> 
                 <a class="btn btn-outline-dark my-2 order-btn" href="orderpage/order.html?id=${id}" data-product-id="${id}" role="button">Beställ</a>
                 
             </div>
@@ -318,5 +293,44 @@ typeWord();
 }
 
 
+// ------------------ Shopping Cart --------------------
 
 
+//Funktion för att visa och dölja varukorg. OM man klickar på shoppingCartets x eller utanför så ska den döljas.
+//Om man klickar på shoppingCartet-ikonen ska den visas
+function toggleShoppingCart(){
+    const cart = document.getElementById('shoppingCart')
+    const overlay = document.getElementById('pageOverlay')
+
+    if(cart.style.display === 'none'){
+        cart.style.display = 'block'
+        overlay.style.display = 'block'
+
+    } else {
+        cart.style.display = 'none'
+        overlay.style.display = 'none'
+    }
+}
+
+const shoppingCartIcon = document.getElementById('shoppingCartIcon')
+shoppingCartIcon.addEventListener('click', function() {
+    toggleShoppingCart();
+});
+
+const pageOverlay = document.getElementById('pageOverlay')
+pageOverlay.addEventListener('click', function() {
+    toggleShoppingCart();
+});
+
+
+function addToCart(productId){
+
+}
+
+function showCart(){
+
+}
+
+function clearCart(){
+    
+}
