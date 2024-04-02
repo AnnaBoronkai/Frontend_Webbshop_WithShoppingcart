@@ -17,6 +17,22 @@ function toggleSearchBar() {
 };
 
 
+//Funktion för att visa och dölja varukorg OM man klickar på shoppingCartets x eller utanför så ska den döljas.
+//Om man klickar på shoppingCartet-ikonen ska den visas
+function toggleShoppingCart(){
+    const cart = document.getElementById('shoppingCart')
+    const overlay = document.getElementById('pageOverlay')
+
+    if(cart.style.display === 'none'){
+        cart.style.display = 'block'
+        overlay.style.display = 'block'
+
+    } else {
+        cart.style.display = 'none'
+        overlay.style.display = 'none'
+    }
+}
+
 
 
 const q = document.querySelectorAll('.q');
