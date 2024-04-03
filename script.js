@@ -47,7 +47,8 @@ $(document).ready(function () {
         var productId = $(this).data('product-id');
         console.log("Produkt med ID " + productId + " läggs till i varukorgen.");
 
-        addToCart(productId)
+        addToCart(productId);
+        loadCartContent();
     });
 
 });
@@ -83,7 +84,7 @@ function createCard(id, image, title, description, price) {
                 </div>
                 <small id="price-text" class="text-muted">$${price}</small> 
                 <a class="btn btn-outline-dark my-2 order-btn" href="orderpage/order.html?id=${id}" data-product-id="${id}" role="button">Beställ</a>
-                
+        
             </div>
         </div>
     </div>
@@ -323,14 +324,59 @@ pageOverlay.addEventListener('click', function() {
 });
 
 
+
+
 function addToCart(productId){
+    // Hämta varukorgen från localStorage, eller skapa en ny om den inte finns
+    let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    
+    // Antag att vi bara sparar produkt-ID och kvantitet för demonstration
+    let product = cart.find(item => item.id === productId);
+    if (product) {
+        product.quantity += 1; // Öka kvantiteten om produkten redan finns
+    } else {
+        cart.push({ id: productId, quantity: 1 }); // Lägg till ny produkt annars
+    }
 
+    // Spara den uppdaterade varukorgen tillbaka i localStorage
+    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    alert('Produkt tillagd i varukorgen'); // Ger feedback till användaren, TAS BORT
+    // loadCartContent(); ?? ska denna vara här??
 }
 
-function showCart(){
 
+
+
+function loadCartContent(){
+    let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    let fetchPromises = cart.map(item => fetch(`https://fakestoreapi.com/products/${item.id}`).then(res => res.json()));
+
+    Promise.all(fetchPromises).then(products => {
+        let cartHTML = products.map(product => {
+            // Skapa HTML för varje produkt baserat på hämtad data
+
+            return `
+                <div class="product-info">
+                    <img src="${product.image}" alt="${product.title}" class="product-image">
+                    <div>${product.title} (Kvantitet: ${cart.find(item => item.id === product.id).quantity}) - $${product.price}</div>
+                </div>
+            `;
+
+        }).join('');
+        
+        $('#cartContent').html(cartHTML.length ? cartHTML : '<div>Varukorgen är tom.</div>'); // Visa den genererade HTML i varukorgen
+    }).catch(error => {
+        console.error("Error fetching products:", error);
+        $('#cartContent').html('<div>Ett fel uppstod vid hämtning av produktinformationen.</div>');
+    });
+
+    
 }
+
+   
+
 
 function clearCart(){
-    
+    localStorage.removeItem('shoppingCart');
+    // Uppdatera UI för att reflektera att varukorgen har tömts
 }

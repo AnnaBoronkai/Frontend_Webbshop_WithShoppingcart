@@ -345,3 +345,9 @@ footer {
     z-index: 500; 
     position: relative; 
 }
+
+.product-image {
+    width: 100px; 
+    height: auto; 
+    display: block; 
+}
