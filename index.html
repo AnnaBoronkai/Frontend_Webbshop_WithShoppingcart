@@ -10,12 +10,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
         integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+
 
 </head>
-
-
-
-
 
 <body>
 
@@ -29,10 +27,14 @@
       <div class="modal-body" id="cartContent">
         <!-- Varukorgsinnehållet läggs till här via JS -->
       </div>
+      
       <div class="modal-footer">
         <span class="total-text" id="totalAmount">Totalt: 0</span>
-        
-        <button type="button" class="btn btn-dark">Gå till Kassan</button>
+        <div class="clear-cart-container">
+            <button id="clearCartButton" class="btn btn-dark">Töm varukorgen</button>
+          </div>
+          <a id="checkoutButton" href="orderpage\order.html" class="btn btn-dark">Gå till Kassan</a>
+
             </div>
         </div>
 
@@ -187,9 +189,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="script.js"></script>
+    <script src="shoppingCart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    
 </body>
 
 </html>

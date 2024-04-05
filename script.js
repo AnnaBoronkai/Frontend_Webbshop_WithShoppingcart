@@ -45,10 +45,13 @@ $(document).ready(function () {
         event.preventDefault();
 
         var productId = $(this).data('product-id');
-        console.log("Produkt med ID " + productId + " läggs till i varukorgen.");
+      
+    
+        console.log("Produkt med ID " + productId + " har lagts till i varukorgen.");
+     
 
         addToCart(productId);
-        loadCartContent();
+    
     });
 
 });

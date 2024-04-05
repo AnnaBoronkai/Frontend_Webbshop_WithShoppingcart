@@ -348,7 +348,6 @@ footer {
     
   }
 
-/* --------------------- om innehållet överstiger höjden --------------------- */
 
   .right-aligned-modal .modal-body { /*---  scollbar  ---*/
     overflow-y: auto; 
@@ -358,3 +357,45 @@ footer {
   .right-aligned-modal .modal-content {
     height: 95%;
   }
+
+  .modal-footer {
+    display: flex;
+    justify-content: start; 
+}
+
+.total-text {
+    flex-grow: 1; 
+}
+
+
+
+.clear-btn, .checkout-btn {
+    background-color: #cac2b8; 
+    color: rgb(252, 250, 250); 
+    border: none; 
+    padding: 10px 20px; 
+    font-weight: bold; 
+    margin: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    border-radius: 10px;
+}
+
+.clear-btn:hover, .checkout-btn:hover {
+    background-color: black
+}
+
+
+.product-card {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.product-card img {
+    margin-right: 15px;
+}
+
+.product-card .col-8 {
+    padding-left: 15px;
+}
