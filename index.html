@@ -14,25 +14,30 @@
 </head>
 
 
-<!-- Härnäst:
-    1. Istället för att komma till beställningsida när man klickar på en beställ-knapp skall varan läggas
-        till i varukorgen, m.a.o. nästan som orderpage. När vi trycker beställ laddas varukorgen med den aktuella varan
-    2. En siffra ska dyka upp i varukorgsikonen som visat hur många varor som finns där i 
-    3. Lägg till ett x i shopping cart-->
+
 
 
 <body>
 
-    <div id="shoppingCart" class="shopping-cart">
-        <div id="cartContent">
-           
-        </div>
-        </div>
-    
+ <div class="modal" id="shoppingCartModal">
+    <div class="modal-dialog right-aligned-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Varukorg</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="cartContent">
+        <!-- Varukorgsinnehållet läggs till här via JS -->
+      </div>
+      <div class="modal-footer">
+        <span class="total-text" id="totalAmount">Totalt: 0</span>
         
-        <div id="pageOverlay" class="overlay">
-             <!-- För skuggning av resten av sidan  -->
+        <button type="button" class="btn btn-dark">Gå till Kassan</button>
+            </div>
         </div>
+
+    </div>
+ </div>
 
     <header class="sticky-top">
 
@@ -45,7 +50,7 @@
         <div class="container-fluid pt-3 pb-2" id="meny-top">
 
             <div class="col-auto d-flex justify-content-end">
-                <button  id="shoppingCartIcon" class="btn">
+                <button  id="shoppingCartIcon" class="btn" data-bs-toggle="modal" data-bs-target="#shoppingCartModal">
                     <i class="bi bi-bag"></i>
                 </button>
             </div>
